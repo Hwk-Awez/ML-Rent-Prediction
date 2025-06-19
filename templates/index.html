@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Estimator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+    <h1 id="Heading">Machine Learning Rental Prediction</h1><br>
+    <h2 id="subheading">Estimate real time house rental using Machine Learning Algorithms</h2><br>
+
+    <form action="/" method="post" required>
+        <label class="tags">Enter State</label><br>
+        <select class="inputs" name="states" required>
+            {% for st in states %}
+
+            <option value='{{st}}'> {{st}} </option>
+            {% endfor %}
+        </select><br><br>
+
+        <label class="tags">Furnishing type</label><br>
+        <select class="inputs" name="furnishing" required>
+
+            {% for fur in furnished %}
+            <option value='{{fur}}'>{{fur}}</option>
+            {% endfor %}
+        </select><br><br>
+        
+        <label class="tags">Floors</label><br>
+        <input type="number" class="inputs" name="floors" required><br><br>
+        
+        <label class="tags">Bathroooms</label><br>
+        <input type="number" class="inputs" name="bathrooms" required><br><br>
+        
+        <label class="tags">Bedrooms</label><br>
+        <input type="number" class="inputs" name="bedrooms" required><br><br>
+        
+        <label class="tags">Car Parkings</label><br>
+        <input type="number" class="inputs" name="parkings" required><br><br>
+        
+        <label class="tags">Living Area</label><br>
+        <input id="inputarea" type="range" min="100" max="20000" step="100" name="area" required>
+        <label id="outputarea"></label><br><br>
+
+
+        <button id="calc" type="submit" name="Estimate">Estimate Rent</button>
+    </form>
+    <br><br>
+
+    <label id="final">Estimated Rent</label><br>
+    <label id="final_val1">{{finalrent}}</label>
+    <label id="final_val2"> INR</label>
+
+    
+</body>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</html>
